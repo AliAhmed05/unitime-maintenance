@@ -22,3 +22,24 @@ manual scheduling conflicts and reduces administrative workload.
 - University Administrators: manage schedules and rooms
 - Professors/Instructors: view schedules and set preferences
 - Students: view timetables and enroll in courses
+## Proposed Changes
+
+### 1. Add email notification when timetable changes
+- Type: New Feature
+- Description: When a timetable is modified, the system shall automatically 
+send an email notification to affected students and instructors.
+
+### 2. Fix room conflict detection bug
+- Type: Bug Fix  
+- Description: Fix the system to correctly identify and prevent all room 
+scheduling conflicts.
+
+### 3. Filter rooms by capacity
+- Type: Enhancement
+- Description: Allow administrators to filter rooms based on seating capacity 
+when assigning rooms to courses.
+
+### 4. Export timetable to PDF
+- Type: New Feature
+- Description: Allow students and administrators to export the timetable as 
+a PDF file.
