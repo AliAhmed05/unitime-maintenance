@@ -24,22 +24,37 @@ manual scheduling conflicts and reduces administrative workload.
 - Students: view timetables and enroll in courses
 ## Proposed Changes
 
-### 1. Remove commented out code in CourseCreditUnitConfig.hbm.xml
-- Type: Enhancement
-- Description: SonarQube detected commented out code in CourseCreditUnitConfig.hbm.xml that should be removed to improve maintainability.
+### 1. Unsafe Integer Parsing Without Try-Catch
+- **Type:** Bug Fix
+- **Motivation:** SonarQube detected unsafe integer parsing in multiple Java files 
+without proper exception handling. This can cause the application to crash when 
+invalid input is received. Adding try-catch blocks will prevent runtime errors 
+and ensure system stability.
 
-### 2. Remove commented out code in CourseOffering.hbm.xml
-- Type: Enhancement
-- Description: SonarQube detected commented out code in CourseOffering.hbm.xml that should be removed to improve maintainability.
+### 2. XXE (XML External Entity) Vulnerability in XML Parsing
+- **Type:** Bug Fix
+- **Motivation:** SonarQube detected 120 security issues including disabled access 
+to external entities in XML parsing in DatabaseUpdate.java. This is a critical 
+security vulnerability that allows attackers to read system files. Disabling 
+external entity processing will secure the system.
 
-### 3. Fix NullPointerException in Debug.java
-- Type: Bug Fix
-- Description: SonarQube detected that a NullPointerException could be thrown in Debug.java. A null check must be added.
+### 3. Null Pointer Exception in Core Classes
+- **Type:** Bug Fix
+- **Motivation:** SonarQube detected 1,596 reliability issues including 
+NullPointerException in Debug.java and CreateBaseModelFromXml.java where variables 
+are nullable and can crash the application. Adding proper null checks will ensure 
+system stability.
 
-### 4. Fix NullPointerException in CreateBaseModelFromXml.java
-- Type: Bug Fix
-- Description: SonarQube detected that a NullPointerException could be thrown in CreateBaseModelFromXml.java. A null check must be added.
+### 4. Hard-coded Secret Token in Source Code
+- **Type:** Bug Fix
+- **Motivation:** SonarQube detected a blocker security issue in 
+ImportTranslations.java where a token is hard-coded in the source code. This is 
+a serious security risk as anyone with access to the code can steal the token. 
+Moving the token to a configuration file will secure the system.
 
-### 5. Correct "&" to "&&" in VariableTitleCourseConnector.java
-- Type: Bug Fix
-- Description: SonarQube detected that "&" should be "&&" in VariableTitleCourseConnector.java to prevent incorrect behavior.
+### 5. Incorrect Logical Operator Causing Wrong Behavior
+- **Type:** Bug Fix
+- **Motivation:** SonarQube detected in VariableTitleCourseConnector.java that a 
+bitwise "&" operator is used instead of the logical "&&" operator. This causes 
+incorrect logical evaluation and wrong behavior in course title processing. 
+Replacing "&" with "&&" will fix the logical evaluation.
