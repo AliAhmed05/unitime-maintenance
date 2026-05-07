@@ -24,22 +24,22 @@ manual scheduling conflicts and reduces administrative workload.
 - Students: view timetables and enroll in courses
 ## Proposed Changes
 
-### 1. Add email notification when timetable changes
-- Type: New Feature
-- Description: When a timetable is modified, the system shall automatically 
-send an email notification to affected students and instructors.
-
-### 2. Fix room conflict detection bug
-- Type: Bug Fix  
-- Description: Fix the system to correctly identify and prevent all room 
-scheduling conflicts.
-
-### 3. Filter rooms by capacity
+### 1. Remove commented out code in CourseCreditUnitConfig.hbm.xml
 - Type: Enhancement
-- Description: Allow administrators to filter rooms based on seating capacity 
-when assigning rooms to courses.
+- Description: SonarQube detected commented out code in CourseCreditUnitConfig.hbm.xml that should be removed to improve maintainability.
 
-### 4. Export timetable to PDF
-- Type: New Feature
-- Description: Allow students and administrators to export the timetable as 
-a PDF file.
+### 2. Remove commented out code in CourseOffering.hbm.xml
+- Type: Enhancement
+- Description: SonarQube detected commented out code in CourseOffering.hbm.xml that should be removed to improve maintainability.
+
+### 3. Fix NullPointerException in Debug.java
+- Type: Bug Fix
+- Description: SonarQube detected that a NullPointerException could be thrown in Debug.java. A null check must be added.
+
+### 4. Fix NullPointerException in CreateBaseModelFromXml.java
+- Type: Bug Fix
+- Description: SonarQube detected that a NullPointerException could be thrown in CreateBaseModelFromXml.java. A null check must be added.
+
+### 5. Correct "&" to "&&" in VariableTitleCourseConnector.java
+- Type: Bug Fix
+- Description: SonarQube detected that "&" should be "&&" in VariableTitleCourseConnector.java to prevent incorrect behavior.
