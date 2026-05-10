@@ -395,7 +395,7 @@ public class VariableTitleCourseConnector extends ApiConnector {
 						) {
 					CourseCreditType cct = CourseCreditType.getCourseCreditTypeForReference(ApplicationProperty.VariableTitleDefaultCourseCreditType.value());
 					CourseCreditUnitType ccut = CourseCreditUnitType.getCourseCreditUnitTypeForReference(ApplicationProperty.VariableTitleDefaultCourseCreditUnitType.value());
-					if (cct != null & ccut != null) {
+					if (cct != null && ccut != null) {
 						CourseCreditUnitConfig ccuc = CourseCreditUnitConfig.createCreditUnitConfigOfFormat(ccf.getReference(), cct, ccut, minCredit, maxCredit, Boolean.TRUE, Boolean.TRUE);
 						ccuc.setOwner(courseOffering);
 						courseOffering.addToCreditConfigs(ccuc);
