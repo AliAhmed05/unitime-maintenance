@@ -287,7 +287,7 @@ public class ImportTranslations {
 			task.setBaseDir(System.getProperty("source", "/Users/muller/git/unitime"));
 			task.setSource(System.getProperty("source", "/Users/muller/git/unitime") + File.separator + "JavaSource");
 			task.setLocales(System.getProperty("locale", "cs"));
-			task.setToken(System.getProperty("token", "b191dd443ab1800fc1e09ef23e50cdb0"));
+			task.setToken(System.getProperty("token", ""));
 			task.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
