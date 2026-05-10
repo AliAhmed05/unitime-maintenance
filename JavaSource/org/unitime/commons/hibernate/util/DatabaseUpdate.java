@@ -72,10 +72,18 @@ public abstract class DatabaseUpdate {
         URL dbUpdateFileUrl = ApplicationProperties.class.getClassLoader().getResource(dbUpdateFile);
         if (dbUpdateFileUrl!=null) {
             Debug.info("Reading " + URLDecoder.decode(dbUpdateFileUrl.getPath(), "UTF-8") + " ...");
-            document = (new SAXReader()).read(dbUpdateFileUrl.openStream());
+            SAXReader saxReader = new SAXReader();
+            saxReader.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+            saxReader.setFeature("http://xml.org/sax/features/external-general-entities", false);
+            saxReader.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+            document = saxReader.read(dbUpdateFileUrl.openStream());
         } else if (new File(dbUpdateFile).exists()) {
             Debug.info("Reading " + dbUpdateFile + " ...");
-            document = (new SAXReader()).read(new File(dbUpdateFile));
+            SAXReader saxReader2 = new SAXReader();
+            saxReader2.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+            saxReader2.setFeature("http://xml.org/sax/features/external-general-entities", false);
+            saxReader2.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+            document = saxReader2.read(new File(dbUpdateFile));
         }
         if (document==null) {
             sLog.error("Unable to execute " + updateName() + " database auto-update, reason: resource "+dbUpdateFile+" not found.");
