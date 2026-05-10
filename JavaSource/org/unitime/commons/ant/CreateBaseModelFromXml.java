@@ -164,6 +164,8 @@ public class CreateBaseModelFromXml extends Task {
 				String name = setEl.attributeValue("name");
 				String column = setEl.element("key").attributeValue("column");
 				String clazz = fixType(setEl.element("many-to-many").attributeValue("class"), pkg);
+				String clazz = fixType(setEl.element("many-to-many").attributeValue("class"), pkg);
+				if (clazz == null) continue;
 				clazz = clazz.substring(clazz.lastIndexOf('.')+1);
 				info("  set: " + clazz + "." + column + ":" + name);
 				iRelations.put(clazz + "." + column, name);
@@ -350,6 +352,7 @@ public class CreateBaseModelFromXml extends Task {
 				type = type.substring(type.lastIndexOf('.')+1);
 			}
 			String name = fixName(el.attributeValue("name"));
+			if (name == null) continue;
 			String column = el.attributeValue("column").toLowerCase();
 			String attribute = name.substring(0,1).toLowerCase()+name.substring(1);
 			if ("default".equals(attribute)) attribute = "defaultValue";
