@@ -44,6 +44,7 @@ public class Debug {
 	 * @param e an error
 	 */
 	public static synchronized void error(Throwable e) {
+		if (e == null) return;
 		LogFactory.getLog(getSource(e)).error(e.getMessage(), e);
 	}
 
