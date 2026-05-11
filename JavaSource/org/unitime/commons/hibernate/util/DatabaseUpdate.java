@@ -112,7 +112,13 @@ public abstract class DatabaseUpdate {
         }
         for (Iterator i=iRoot.elementIterator("update");i.hasNext();) {
             Element updateElement = (Element)i.next();
-            int updateVersion = Integer.parseInt(updateElement.attributeValue("version"));
+            int updateVersion = 0;
+            try {
+                updateVersion = Integer.parseInt(updateElement.attributeValue("version"));
+            } catch (NumberFormatException e) {
+                Debug.warning("Invalid version number: " + updateElement.attributeValue("version"));
+                continue;
+            }
             if (updateVersion>getVersion() && !performUpdate(updateElement)) break;
         }
         sLog.info("New " + updateName() + " database version: "+getVersion());
@@ -120,7 +126,13 @@ public abstract class DatabaseUpdate {
     
 	@SuppressWarnings("deprecation")
 	public boolean performUpdate(Element updateElement) {
-        int version = Integer.parseInt(updateElement.attributeValue("version"));
+            int version = 0;
+            try {
+                version = Integer.parseInt(updateElement.attributeValue("version"));
+            } catch (NumberFormatException e) {
+                Debug.warning("Invalid version number: " + updateElement.attributeValue("version"));
+                return false;
+            }
         Session hibSession = new _RootDAO().getSession();
         String schema = HibernateUtil.getConfiguration().getProperty("hibernate.default_schema");
         Transaction tx = null;
