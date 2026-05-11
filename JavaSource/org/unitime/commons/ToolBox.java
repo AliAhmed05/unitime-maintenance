@@ -217,10 +217,10 @@ public class ToolBox {
 			Object oa = a.elementAt(i);
 			Object ob = b.elementAt(i);
 
-			if (!oa.equals(ob)) {
-				Debug.log("  diff: " + oa + " with " + ob);
-				return true;
-			}
+            if (oa == null ? ob != null : !oa.equals(ob)) {
+                Debug.log("  diff: " + oa + " with " + ob);
+                return true;
+            }
 		}
 		return false;
 	}
@@ -267,10 +267,10 @@ public class ToolBox {
 			Object oa = a.get(keya);
 			Object ob = b.get(keyb);
 
-			if (!oa.equals(ob)) {
-				Debug.log("  diff: " + oa + " with " + ob);
-				return true;
-			}
+            if (oa == null ? ob != null : !oa.equals(ob)) {
+                Debug.log("  diff: " + oa + " with " + ob);
+                return true;
+            }
 		}
 		return false;
 	}
